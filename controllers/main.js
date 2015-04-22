@@ -1,15 +1,20 @@
-Book = require('../models/book');
+Comment = require('../models/comment');
 
 exports.index = function(req, res, err) {
-  res.render("index", { title: 'Express' });
+  Comment.findAll().then(function(comments) {
+    console.log(comments);
+    res.render("index", { title: 'Hi guest.', comments: comments });
+  });
 };
 
-exports.add_book = function(req, res, err) {
-  Book.sync().then(function() {
-    Book.create({
-      name: req.body.name,
-      public_date: new Date(),
+exports.add_comment = function(req, res, err) {
+  Comment.sync().then(function() {
+    return Comment.create({
+      poster: req.body.poster,
+      email: req.body.email,
+      content: req.body.content,
     });
+  }).then(function(){
+    res.redirect(302, '/');
   });
-  res.send(req.body);
 };

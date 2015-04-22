@@ -2,4 +2,24 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  table(border='1')
+    thead
+      th Poster
+      th E-Mail
+      th Content
+      th Date
+    each comment in comments
+      tr
+        td= comment.poster
+        td= comment.email
+        td 
+          pre= comment.content
+        td= comment.createdAt.toISOString()
+  form(action='add_comment', method='post')
+    p Your Name: 
+      input(type='text', name='poster')
+    p Your email:
+      input(type='text', name='email')
+    p 
+      textarea(name='content', cols=50, rows=10)
+    input(type='submit', value='Submit')
