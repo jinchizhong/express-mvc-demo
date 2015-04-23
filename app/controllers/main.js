@@ -1,4 +1,4 @@
-Comment = require('../models/comment');
+Comment = require('../models').Comment;
 
 exports.index = function(req, res, err) {
   Comment.findAll().then(function(comments) {

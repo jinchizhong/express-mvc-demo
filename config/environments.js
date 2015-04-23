@@ -1,10 +1,7 @@
 var express_config = {
   development: {
-    db: {
-      datebase: 'database',
-      dialect: 'sqlite',
-      storage: __dirname + "/../db/development.sqlite3",
-    },
+    db: "sqlite://localhost/database",
+    db_storage: __dirname + "/../db/development.sqlite3",
   },
 };
 

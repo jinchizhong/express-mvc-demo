@@ -1,12 +1,9 @@
-var Sequelize = require('sequelize');
-var DB = require('../../lib/db');
+module.exports = function (db, Sequelize) {
+  var Comment = db.define('Comment', {
+    poster: Sequelize.STRING,
+    email: Sequelize.STRING,
+    content: Sequelize.STRING,
+  });
 
-var Comment = DB.define('comment', {
-  poster: Sequelize.STRING,
-  email: Sequelize.STRING,
-  content: Sequelize.STRING,
-});
-
-Comment.sync();
-
-module.exports = Comment;
+  return Comment;
+}
