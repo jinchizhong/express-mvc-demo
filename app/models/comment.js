@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var DB = require('../lib/db');
+var DB = require('../../lib/db');
 
 var Comment = DB.define('comment', {
   poster: Sequelize.STRING,

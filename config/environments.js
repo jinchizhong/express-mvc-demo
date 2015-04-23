@@ -15,4 +15,6 @@ if (!express_config[env]) {
   throw new Error('express environment config `' + env + '` not exists!');
 }
 
+express_config[env].name = env
+
 module.exports = express_config[env]
